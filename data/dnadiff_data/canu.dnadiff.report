@@ -1,0 +1,87 @@
+/Volumes/Lacie/19_nanopore_dna/data/canu_data/pyrococcus.contigs.fasta /Volumes/Lacie/19_nanopore_dna/data/genome_data/CP023154.fasta
+NUCMER
+
+                               [REF]                [QRY]
+[Sequences]
+TotalSeqs                          1                    1
+AlignedSeqs               1(100.00%)           1(100.00%)
+UnalignedSeqs               0(0.00%)             0(0.00%)
+
+[Bases]
+TotalBases                   1891829              1889914
+AlignedBases        1891827(100.00%)     1889914(100.00%)
+UnalignedBases              2(0.00%)             0(0.00%)
+
+[Alignments]
+1-to-1                             3                    3
+TotalLength                  1886428              1897449
+AvgLength                  628809.33            632483.00
+AvgIdentity                    99.42                99.42
+
+M-to-M                             5                    5
+TotalLength                  1891827              1902885
+AvgLength                  378365.40            380577.00
+AvgIdentity                    99.41                99.41
+
+[Feature Estimates]
+Breakpoints                        8                    8
+Relocations                        1                    1
+Translocations                     0                    0
+Inversions                         0                    0
+
+Insertions                         3                    0
+InsertionSum                    5584                    0
+InsertionAvg                 1861.33                 0.00
+
+TandemIns                          0                    0
+TandemInsSum                       0                    0
+TandemInsAvg                    0.00                 0.00
+
+[SNPs]
+TotalSNPs                         51                   51
+TG                          2(3.92%)             1(1.96%)
+TC                        17(33.33%)             1(1.96%)
+TA                          1(1.96%)             3(5.88%)
+GC                          1(1.96%)             2(3.92%)
+GA                          0(0.00%)           20(39.22%)
+GT                          1(1.96%)             2(3.92%)
+AT                          3(5.88%)             1(1.96%)
+AG                        20(39.22%)             0(0.00%)
+AC                          3(5.88%)             0(0.00%)
+CG                          2(3.92%)             1(1.96%)
+CA                          0(0.00%)             3(5.88%)
+CT                          1(1.96%)           17(33.33%)
+
+TotalGSNPs                        23                   23
+TG                          0(0.00%)             0(0.00%)
+TC                         8(34.78%)             1(4.35%)
+TA                          0(0.00%)             1(4.35%)
+GC                          0(0.00%)             0(0.00%)
+GA                          0(0.00%)           11(47.83%)
+GT                          0(0.00%)             0(0.00%)
+CA                          0(0.00%)             2(8.70%)
+CG                          0(0.00%)             0(0.00%)
+CT                          1(4.35%)            8(34.78%)
+AT                          1(4.35%)             0(0.00%)
+AG                        11(47.83%)             0(0.00%)
+AC                          2(8.70%)             0(0.00%)
+
+TotalIndels                    10895                10895
+T.                          3(0.03%)         2713(24.90%)
+G.                          0(0.00%)         2681(24.61%)
+A.                          1(0.01%)         2856(26.21%)
+C.                          1(0.01%)         2640(24.23%)
+.C                      2640(24.23%)             1(0.01%)
+.G                      2681(24.61%)             0(0.00%)
+.A                      2856(26.21%)             1(0.01%)
+.T                      2713(24.90%)             3(0.03%)
+
+TotalGIndels                    7434                 7434
+T.                          0(0.00%)         1921(25.84%)
+G.                          0(0.00%)         1817(24.44%)
+C.                          0(0.00%)         1761(23.69%)
+A.                          0(0.00%)         1935(26.03%)
+.C                      1761(23.69%)             0(0.00%)
+.G                      1817(24.44%)             0(0.00%)
+.A                      1935(26.03%)             0(0.00%)
+.T                      1921(25.84%)             0(0.00%)

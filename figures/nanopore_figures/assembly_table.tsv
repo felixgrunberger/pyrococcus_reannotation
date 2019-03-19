@@ -1,4 +1,4 @@
 assemblies	total.bases	gc.content..percentage.	contigs	percentage.identity..1.to.1.dnadiff.
 Illumina/PacBio	1889914	40.75	1	100
 Nanopore raw (canu assembly)	1891829	40.69	1	99.42
-Nanopore polished (nanopolish assembly)	1902024	40.75	1	99.92
+Nanopore polished (nanopolish assembly)	1896610	40.75	1	99.92

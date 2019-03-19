@@ -5,9 +5,6 @@ This Github repository contains code, figures and documentation for reproducing 
 ## Structure  
 The repository is structured in the folders `code` (R code and Rmd documents), `data` (genomic data and output from ANNOgesic/ISESfinder, etc.. ) and `figures` (raw R plots as PDFs).    
 
-## Workflow  
-Different sequencing data sets used in this study are summarized in the following figure:  
-<!--![draft workflow](figures/draft_workflow.tiff)-->
 
 ## *Pyrococcus assemblies*   
 Script and figures for the comparison of different *Pyrococcus furiosus* assemblies have a `dnaseq_`.. prefix.  

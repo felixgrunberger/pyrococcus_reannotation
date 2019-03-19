@@ -1,5 +1,4 @@
-# Re-annotation of the hyperthermophilic archaeon *Pyrococcus furiosus* using genome and RNA sequencing  
-Felix Grünberger (Institute of Microbiology and Archaea Center, University of Regensburg, Regensburg, Germany)  
+# Next generation DNA-Seq and differential RNA-Seq allow re-annotation of the *Pyrococcus furiosus* DSM 3638 genome and provide insights into archaeal antisense transcription  
 
 This Github repository contains code, figures and documentation for reproducing our work and may be used for future similar projects.  
 

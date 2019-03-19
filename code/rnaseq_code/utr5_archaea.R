@@ -111,7 +111,7 @@ joined_table2 <- joined_table %>%
   mutate(UTR2 = UTR + 1)
 
 pdf(here("figures/rnaseq_figures/utr5_archaea.pdf"), 
-    width = 15, height = 14, paper = "special",onefile=FALSE)
+    width = 8, height = 7, paper = "special",onefile=FALSE)
 ggplot(data = joined_table2, aes(x = UTR2, fill = ORG, linetype = ORG)) +
   geom_density(size = 1.2, alpha = 0.6, color = "black") + 
   scale_x_continuous(limits = c(1,300),breaks = c(1,10,100),labels = c(0,9, 99),trans = "log10") +

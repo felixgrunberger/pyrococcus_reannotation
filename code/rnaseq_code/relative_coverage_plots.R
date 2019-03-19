@@ -159,56 +159,57 @@ cov_a <- rbind(frag_cov_a, tex_cov_a, notex_cov_a) %>%
 
 # >> primary
 pdf(here("figures/rnaseq_figures/coverage_3primary.pdf"), 
-    width = 10, height = 7, paper = "special",onefile=FALSE)
+    width = 3.5, height = 3.5, paper = "special",onefile=FALSE)
 ggplot() + 
   stat_smooth(data = cov_p, aes(x = number, y= SENSE, fill = TYPE), geom = "area", method = "loess", span = 0.07) +
-  stat_smooth(data = cov_p, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 2) +
+  stat_smooth(data = cov_p, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 1) +
   theme_Publication() + 
   scale_linetype_manual(values=c("solid","twodash", "dotted")) +
   scale_fill_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 0.3) +
   scale_color_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 1) +
-  labs(x = "Position to pTSS [nt]", y = "average coverage") + 
+  labs(x = "Position to pTSS [nt]", y = "relative \ncoverage") + 
   geom_vline(xintercept = c(0), linetype = "longdash", alpha = 0.5) 
 dev.off()
 
 # >> secondary
 pdf(here("figures/rnaseq_figures/coverage_3sec.pdf"), 
-    width = 10, height = 7, paper = "special",onefile=FALSE)
+    width = 3.5, height = 3.5, paper = "special",onefile=FALSE)
 ggplot() + 
   stat_smooth(data = cov_s, aes(x = number, y= SENSE, fill = TYPE), geom = "area", method = "loess", span = 0.07) +
-  stat_smooth(data = cov_s, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 2) +
+  stat_smooth(data = cov_s, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 1) +
   theme_Publication() +  
   scale_linetype_manual(values=c("solid","twodash", "dotted")) +
   scale_fill_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 0.3) +
   scale_color_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 1) +
-  labs(x = "Position to sTSS [nt]", y = "average coverage") + 
+  labs(x = "Position to sTSS [nt]", y = "relative \ncoverage") + 
   geom_vline(xintercept = c(0), linetype = "longdash", alpha = 0.5) 
 dev.off()
 
 # >> internal
 pdf(here("figures/rnaseq_figures/coverage_3internal.pdf"), 
-    width = 10, height = 7, paper = "special",onefile=FALSE)
+    width = 3.5, height = 3.5, paper = "special",onefile=FALSE)
 ggplot() + 
   stat_smooth(data = cov_i, aes(x = number, y= SENSE, fill = TYPE), geom = "area", method = "loess", span = 0.07) +
-  stat_smooth(data = cov_i, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 2) +
+  stat_smooth(data = cov_i, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 1) +
   theme_Publication() + 
   scale_linetype_manual(values=c("solid","twodash", "dotted")) +
   scale_fill_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 0.3) +
   scale_color_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 1) +
-  labs(x = "Position to iTSS [nt]", y = "average coverage") + 
+  labs(x = "Position to iTSS [nt]", y = "relative \ncoverage") + 
   geom_vline(xintercept = c(0), linetype = "longdash", alpha = 0.5) 
 dev.off()
 
 # >> antisense
 pdf(here("figures/rnaseq_figures/coverage_3antisense.pdf"), 
-    width = 10, height = 7, paper = "special",onefile=FALSE)
+    width = 3.5, height = 3.5, paper = "special",onefile=FALSE)
 ggplot() + 
   stat_smooth(data = cov_a, aes(x = number, y= SENSE, fill = TYPE), geom = "area", method = "loess", span = 0.07) +
-  stat_smooth(data = cov_a, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 2) +
+  stat_smooth(data = cov_a, aes(x = number, y= SENSE, color = TYPE, linetype= TYPE), geom = "line", method = "loess", span = 0.07, size = 1) +
   theme_Publication() + 
   scale_linetype_manual(values=c("solid","twodash", "dotted")) +
   scale_fill_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 0.3) +
   scale_color_viridis(discrete = T, begin = 0.2, end = 0.6, alpha = 1) +
-  labs(x = "Position to aTSS [nt]", y = "average coverage") + 
+  labs(x = "Position to aTSS [nt]", y = "relative \ncoverage") + 
   geom_vline(xintercept = c(0), linetype = "longdash", alpha = 0.5) 
 dev.off()
+

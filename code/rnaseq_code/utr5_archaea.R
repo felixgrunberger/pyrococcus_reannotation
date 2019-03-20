@@ -52,6 +52,16 @@ theme_Publication <- function(base_size=14) {
 # load archaeal data sets 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
 
+# >> METHANOCALDOCOCCUS JANASCHII
+### file location "https://media.nature.com/original/nature-assets/nmicrobiol/2017/nmicrobiol201721/extref/nmicrobiol201721-s3.xlsx",
+mja_file <- read_excel("/Users/felixgrunberger/Downloads/nmicrobiol201721-s3.xlsx", 
+                       sheet = 1, col_names = T, col_types = NULL, na = "", skip = 30) %>%
+  as.data.table() %>%
+  mutate(UTR = `Leader length9`,
+         ORG = "MJA",
+         MED = median(UTR,na.rm = T)) %>%
+  dplyr::filter(!is.na(UTR) & UTR >= 0) %>%
+  dplyr::select(UTR, ORG, MED) 
 
 # >> THERMOCOCCUS ONNURINEUS
 ### file location "https://media.nature.com/original/nature-assets/srep/2017/170220/srep43044/extref/srep43044-s1.pdf"
@@ -100,8 +110,10 @@ pfu_file <- fread(here("data/annogesic_data/MasterTable.tsv")) %>%
   dplyr::select(UTR, ORG, MED) 
 
 # >> combine tables
-joined_table <- rbind(tko_file, hvo_file, ton_file, pfu_file) %>%
+joined_table <- rbind(mja_file,tko_file, hvo_file, ton_file, pfu_file) %>%
   mutate(ORG = reorder(ORG, MED))
+
+joined_table$ORG <- factor(joined_table$ORG,levels(joined_table$ORG)[c(1,2,3,5,4)])
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
@@ -114,9 +126,9 @@ pdf(here("figures/rnaseq_figures/utr5_archaea.pdf"),
     width = 8, height = 7, paper = "special",onefile=FALSE)
 ggplot(data = joined_table2, aes(x = UTR2, fill = ORG, linetype = ORG)) +
   geom_density(size = 1.2, alpha = 0.6, color = "black") + 
-  scale_x_continuous(limits = c(1,300),breaks = c(1,10,100),labels = c(0,9, 99),trans = "log10") +
+  scale_x_continuous(limits = c(1,300),breaks = c(1,6,11,51,101,301),labels = c(0,5,10,50,100,300),trans = "log10") +
   scale_fill_viridis_d(begin = 0.2, end = 0.8) +
-  scale_linetype_manual(values = c("solid", "longdash", "dashed", "dotted")) +
+  scale_linetype_manual(values = c("solid", "longdash", "dashed", "dotted", "solid")) +
   theme_Publication() +
   xlab("5`UTR length [nt, log10 scale]") +
   ylab("density")

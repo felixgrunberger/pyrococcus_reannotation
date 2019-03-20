@@ -54,7 +54,7 @@ theme_Publication <- function(base_size=14) {
 
 # >> METHANOCALDOCOCCUS JANASCHII
 ### file location "https://media.nature.com/original/nature-assets/nmicrobiol/2017/nmicrobiol201721/extref/nmicrobiol201721-s3.xlsx",
-mja_file <- read_excel("/Users/felixgrunberger/Downloads/nmicrobiol201721-s3.xlsx", 
+mja_file <- read_excel("..file_location..", 
                        sheet = 1, col_names = T, col_types = NULL, na = "", skip = 30) %>%
   as.data.table() %>%
   mutate(UTR = `Leader length9`,

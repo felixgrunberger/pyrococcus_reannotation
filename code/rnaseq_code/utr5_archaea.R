@@ -14,6 +14,7 @@ library(stringr)
 library(readxl)
 library(viridis)
 library(ggthemes)
+library(ggridges)
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
@@ -122,16 +123,18 @@ joined_table$ORG <- factor(joined_table$ORG,levels(joined_table$ORG)[c(1,2,3,5,4
 joined_table2 <- joined_table %>%
   mutate(UTR2 = UTR + 1)
 
+
 pdf(here("figures/rnaseq_figures/utr5_archaea.pdf"), 
     width = 8, height = 7, paper = "special",onefile=FALSE)
-ggplot(data = joined_table2, aes(x = UTR2, fill = ORG, linetype = ORG)) +
-  geom_density(size = 1.2, alpha = 0.6, color = "black") + 
+ggplot(data = joined_table2, aes(x = UTR2, fill = ORG, y = ORG)) +
+  geom_density_ridges2(size = 1.2, alpha = 0.6, color = "black") + 
   scale_x_continuous(limits = c(1,300),breaks = c(1,6,11,51,101,301),labels = c(0,5,10,50,100,300),trans = "log10") +
   scale_fill_viridis_d(begin = 0.2, end = 0.8) +
-  scale_linetype_manual(values = c("solid", "longdash", "dashed", "dotted", "solid")) +
   theme_Publication() +
   xlab("5`UTR length [nt, log10 scale]") +
   ylab("density")
 dev.off()
+
+
 
 

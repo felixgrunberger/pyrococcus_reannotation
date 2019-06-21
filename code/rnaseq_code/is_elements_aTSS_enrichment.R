@@ -12,7 +12,7 @@ library(Biostrings)
 library(data.table)
 library(ape)
 library(ggthemes)
-
+library(here)
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
 # theme for plotting
@@ -119,33 +119,36 @@ for(i in 1:length(is_pfu_new$id)){
 
 
 # >> combine TSS and IS file
-tss_ISelement_b <- left_join(is_pfu_new,tss_table_antisense, by = c("cor_gene" = "Locus_tag"))
 tss_ISelement_a <- left_join(tss_table_antisense,is_pfu_new, by = c("Locus_tag" = "cor_gene"))  %>%
   dplyr::filter(!is.na(id)) %>%
-  mutate(Position = Pos,
+  mutate(aTSS = Pos,
          strand = Strand,
          length = abs(end_read-start_read)) %>%
-  dplyr::select(Locus_tag, strand,Position, start_read, end_read, length) %>%
-  mutate(norm = ifelse(strand == "+" & Position < start_read & Position > (start_read - 100),
-                       0 + (Position - start_read + 100) * (100/100),
-                       ifelse(strand == "+" & Position >= start_read & Position < end_read,
-                              100 + (Position - start_read) * (100/length),
-                              ifelse(strand == "+" & Position >= end_read & Position <= (end_read+100),
-                                     200 + (Position - end_read) * (100/100),
-                                     ifelse(strand == "-" & Position > end_read & Position < (end_read +  100),
-                                            0 + (end_read + 100 - Position) * (100/100),
-                                            ifelse(strand == "-" & Position <= end_read & Position > start_read, 
-                                                   100 + (end_read - Position) * (100/length),
-                                                   ifelse(strand == "-" & Position < start_read & Position >= (start_read-300), 
-                                                          200 + (start_read - Position) * (100/100), NA)))))))
-tss_ISelement_a2 <- tss_ISelement_a[!duplicated(tss_ISelement_a$Position),]
+  dplyr::select(Locus_tag, strand,aTSS, start_read, end_read, length) %>%
+  mutate(insertion_strand = ifelse(strand == "+", "-", "+")) %>%
+  rowwise() %>%
+  mutate(norm = ifelse(insertion_strand == "+" & aTSS < start_read & aTSS > (start_read - 100),
+                       0 + ((start_read - aTSS) * (100/100)),
+                       ifelse(insertion_strand == "+" & aTSS >= start_read & aTSS < end_read,
+                              100 + ((aTSS - start_read) * (100/length)),
+                              ifelse(insertion_strand == "+" & aTSS >= end_read & aTSS <= (end_read+100),
+                                     200 + ((aTSS - end_read) * (100/100)),
+                                     ifelse(insertion_strand == "-" & aTSS > end_read & aTSS < (end_read +  100),
+                                            0 + (aTSS - end_read) * (100/100),
+                                            ifelse(insertion_strand == "-" & aTSS <= end_read & aTSS > start_read, 
+                                                   100 + (end_read - aTSS) * (100/length),
+                                                   ifelse(insertion_strand == "-" & aTSS < start_read & aTSS >= (start_read-100), 
+                                                          200 + (start_read - aTSS) * (100/100), NA)))))))
+
+tss_ISelement_a2 <- tss_ISelement_a[!duplicated(tss_ISelement_a$aTSS),] %>%
+  dplyr::filter(!is.na(norm))
+tss_ISelement_a2
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
 # plot data
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
 pdf(here("figures/rnaseq_figures/iselement_antisense.pdf"), 
     width = 10, height = 7, paper = "special",onefile=FALSE)
-
 ggplot(data = tss_ISelement_a2, aes(x = norm, y = ..count..)) +
   theme_Publication() +
   geom_histogram(fill = viridis_pal()(10)[4],      # Histogram with density instead of count on y-axis

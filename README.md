@@ -1,6 +1,6 @@
 # Next generation DNA-Seq and differential RNA-Seq allow re-annotation of the *Pyrococcus furiosus* DSM 3638 genome and provide insights into archaeal antisense transcription  
 
-This Github repository contains code, figures and documentation for reproducing our work and may be used for future similar projects.  
+This Github repository contains code, figures and documentation for reproducing our work and may be used for future similar projects. This work is published in <a href= "https://www.frontiersin.org/articles/10.3389/fmicb.2019.01603/full">Frontiers is Microbiolgy"</a>"  
 
 ## Structure  
 The repository is structured in the folders `code` (R code and Rmd documents), `data` (genomic data and output from ANNOgesic/ISESfinder, etc.. ) and `figures` (raw R plots as PDFs).    

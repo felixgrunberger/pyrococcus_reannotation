@@ -142,7 +142,7 @@ tss_ISelement_a <- left_join(tss_table_antisense,is_pfu_new, by = c("Locus_tag" 
 
 tss_ISelement_a2 <- tss_ISelement_a[!duplicated(tss_ISelement_a$aTSS),] %>%
   dplyr::filter(!is.na(norm))
-tss_ISelement_a2
+tss_ISelement_a2 %>% as.data.table()
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
 # plot data
